@@ -1,0 +1,52 @@
+train_file:  ['./data/retrieval/flickr30k_train.json']
+val_file: './data/retrieval/flickr30k_val.json'                
+test_file: './data/retrieval/flickr30k_test.json'
+image_root: '/data/v-yuczhou/data/flickr/'
+
+#bert_config: 'configs/config_bert.json'
+
+model_type: 'tcl' #tcl, xvlm
+
+use_swin: False
+#vision_config: 'configs/config_swinB_384.json'
+#patch_size: 32
+#bert_config: 'configs/config_bert_xvlm.json'
+
+use_tcl: True
+#vision_width: 768
+bert_config: 'configs/config_bert.json'
+
+image_res: 384
+batch_size_train: 26
+batch_size_test: 8
+
+queue_size: 65536
+momentum: 0.995
+vision_width: 768
+embed_dim: 256
+temp: 0.07
+k_test: 128
+
+img_head: False
+text_head: False
+
+alpha: 0.4
+warm_up: True
+align_loss: True
+lexicon_loss: False
+cl_cls: False
+cl_bw: False
+text_embed: 'embed' # embed cls bw
+img_embed: 'embed' #embed embed_mean p2w
+recls : False
+rerank: True
+
+optimizer: {opt: adamW, lr: 1e-5, weight_decay: 0.02} 
+schedular: {sched: cosine, lr: 1e-5, epochs: 10, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
+
+
+
+
+
+
+

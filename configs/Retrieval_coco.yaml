@@ -1,0 +1,61 @@
+train_file:  ['./data/retrieval/coco_train.json']
+val_file: './data/retrieval/coco_val.json'                
+test_file: './data/retrieval/coco_test.json'
+image_root: '/data/v-yuczhou/data/COCO/'
+
+model_type: 'tcl' #tcl, xvlm
+
+use_swin: False
+#vision_config: 'configs/config_swinB_384.json'
+#patch_size: 32
+#bert_config: 'configs/config_bert_xvlm.json'
+
+use_tcl: True
+bert_config: 'configs/config_bert.json'
+
+image_res: 384
+batch_size_train: 26
+batch_size_test: 8
+
+queue_size: 65536
+momentum: 0.995
+vision_width: 768
+embed_dim: 256
+temp: 0.07
+k_test: 256
+
+img_head: False
+text_head: False
+
+alpha: 0.4
+warm_up: True
+align_loss: True
+lexicon_loss: False
+cl_cls: False
+cl_bw: False
+text_embed: 'embed' # embed cls bw
+img_embed: 'embed' #embed embed_mean p2w
+recls : False
+rerank: True
+
+#regularizer:
+#  FLOPS:
+#    lambda_d: 5e-4
+#    T: 50000
+#    targeted_rep: rep
+#    reg: FLOPS
+#  L1:
+#    lambda_q: 5e-4
+#    T: 50000
+#    targeted_rep: rep
+#    reg: L1
+
+optimizer: {opt: adamW, lr: 7e-6, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 7e-6, epochs: 10, min_lr: 3e-6, decay_rate: 1, warmup_lr: 7e-6, warmup_epochs: 2, cooldown_epochs: 0}
+
+
+
+
+
+
+

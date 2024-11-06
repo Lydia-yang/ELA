@@ -1,0 +1,36 @@
+#train_file: 'data/comQA/train_rand_split.jsonl'
+#val_file: 'data/comQA/dev_rand_split.jsonl'                
+#test_file: 'data/comQA/test_rand_split_no_answers.jsonl'
+#image_file_train: 'data/result/ans_comQA_txt_train.json'
+#image_file_val: 'data/result/ans_comQA_txt_val.json'
+#image_file_test: 'data/result/ans_comQA_txt_val.json'
+
+train_file: 'data/winogrande/train_l.jsonl'
+val_file: 'data/winogrande/dev.jsonl'                
+test_file: 'data/winogrande/dev.jsonl'
+image_file_train: 'data/result/ans_winG_txt_trainl.json'
+image_file_val: 'data/result/ans_winG_txt_val.json'
+image_file_test: 'data/result/ans_winG_txt_val.json'
+
+image_root: '/mnt/blobfuse/data/'
+
+image_res: 384
+batch_size_train: 16 
+batch_size_test: 16
+
+alpha: 0.4
+distill: True
+warm_up: False
+image: True
+
+bert_config: 'configs/config_bert.json'
+
+optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 2e-5, epochs: 30, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
+
+
+
+
+
+
+

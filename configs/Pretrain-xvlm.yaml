@@ -1,0 +1,54 @@
+train_file: [  './data/pretrain/coco.json',
+               './data/pretrain/vg.json',
+               './data/pretrain/cc3m_train.json',
+               './data/pretrain/cc3m_val.json',
+               './data/pretrain/sbu.json'   
+               #'./data/pretrain/example.json'             
+               ]
+#val_file: ['./data/pretrain/dev.json']
+
+# each train_file (json) contains a python list where each item is {'image': img_path, 'caption': text or list_of_text }               
+
+ckpt_rpath: '/data/v-yuczhou/model/'
+model_type: 'xvlm' #tcl, xvlm
+
+use_swin: True
+vision_config: 'configs/config_swinB_224.json'
+image_res: 224
+patch_size: 32
+bert_config: 'configs/config_bert.json'
+
+use_tcl: False
+#image_res: 256
+#vision_width: 768
+#bert_config: 'configs/config_bert.json'
+
+im_probability: 0.30
+embed_dim: 256
+batch_size: 40
+batch_size_eval: 16
+temp: 0.07
+mlm_probability: 0.15
+alpha: 0.4
+
+use_teacher: False
+img_pooling: False
+img_head: False
+open_voc: False
+weight: 1
+
+mid_mlm: True
+text_head: False
+
+cl_cls: False
+cl_bw: False
+
+optimizer: {opt: adamW, lr: 1e-5, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 1e-5, epochs: 5, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 2, cooldown_epochs: 0}
+#optimizer: {opt: adamW, lr: 3e-5, weight_decay: 0.01, lr_mult: 2}
+#schedular: {sched: linear, lr: 3e-5, epochs: 10, num_warmup_steps: 0.1}
+
+
+
+
+
